@@ -233,9 +233,11 @@ class Client
      * @return string
      * @throws BackBlazeException
      */
-    public function listFileNames($bucketId)
+    public function listFileNames($bucketId, $startFileName = null, $maxFileCount = 100)
     {
-        return $this->post('/b2api/v1/b2_list_file_names', compact('bucketId'));
+        if($startFileName == null) unset $startFileName;
+
+        return $this->post('/b2api/v1/b2_list_file_names', compact('bucketId', 'startFileName', 'maxFileCount'));
     }
 
     /**
