@@ -189,6 +189,11 @@ class Client
         return $this->get($this->downloadUrl . '/b2api/v1/b2_download_file_by_id?fileId=' . $fileId);
     }
 
+    public function getDownloadUrlById($fileId)
+    {
+        return $this->downloadUrl . '/b2api/v1/b2_download_file_by_id?fileId=' . $fileId;
+    }
+
     /**
      * Used to Download files from BackBlze
      * @param $uri
@@ -222,6 +227,12 @@ class Client
     {
         return $this->get($this->downloadUrl . '/file/' . $bucketName . '/' . $fileName);
     }
+
+    public function getDownloadUrlByName($bucketName, $fileName)
+    {
+        return $this->downloadUrl . '/file/' . $bucketName . '/' . $fileName;
+    }
+
 
     /**
      * @param $fileId
