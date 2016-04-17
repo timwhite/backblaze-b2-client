@@ -33,6 +33,12 @@ class Client
      * @var Guzzle
      */
     protected $guzzle;
+    /**
+     * @var DateTime
+     */
+    protected $authTime;
+
+
 
     /**
      * Client constructor.
@@ -44,6 +50,22 @@ class Client
         $this->accountId = $accountId;
         $this->guzzle = new Guzzle();
         $this->authorize_account($accountId, $applicationKey);
+    }
+
+    public function __sleep()
+    {
+        return ['authorizeUrl', 'accountId', 'apiUrl', 'downloadUrl', 'authToken', 'authTime'];
+
+    }
+
+    public function __wakeup()
+    {
+        $this->guzzle = new Guzzle();
+    }
+
+    public function getAuthTime()
+    {
+        return $this->authTime;
     }
 
     /**
@@ -67,6 +89,7 @@ class Client
             $this->apiUrl = $json->apiUrl;
             $this->authToken = $json->authorizationToken;
             $this->downloadUrl = $json->downloadUrl;
+            $this->authTime = new DateTime();
 
         } catch (ClientException $e) {
             throw new NotAuthorizedException($e->getMessage());
