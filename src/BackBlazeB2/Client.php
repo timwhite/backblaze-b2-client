@@ -245,9 +245,9 @@ class Client
      * @return string
      * @throws BackBlazeException
      */
-    public function listFileVersions($bucketId)
+    public function listFileVersions($bucketId, $startFileName = null, $maxFileCount = 100)
     {
-        return $this->post('/b2api/v1/b2_list_file_versions', compact('bucketId'));
+        return $this->post('/b2api/v1/b2_list_file_versions', compact('bucketId', 'startFileName', 'maxFileCount'));
     }
 
     /**
