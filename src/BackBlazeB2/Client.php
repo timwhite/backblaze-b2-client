@@ -5,6 +5,7 @@ use BackBlazeB2\Exceptions\NotAuthorizedException;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
+use DateTime;
 
 class Client
 {
