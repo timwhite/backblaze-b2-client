@@ -68,6 +68,11 @@ class Client
         return $this->authTime;
     }
 
+    public function getAccountId()
+    {
+        return $this->accountId;
+    }
+
     /**
      * @param $accountId
      * @param $applicationKey
